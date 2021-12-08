@@ -53,18 +53,15 @@ int main(void)
 
   MX_TIM3_Init();
 
+  uint8_t message[] = "AabCc";
+  uint8_t length = sizeof(message)/sizeof(uint8_t);
   while (1)
   {
-	  if(disp_time > (saved_time + 100))
+	  if(disp_time > (saved_time + 500))
 	  {
-		  displayNumber(num_to_display);
-	  	  num_to_display -= 0.10;
 	  	  saved_time = disp_time;
+  	  	  fillBufferForDisplay(message, length);
 
-	  	  if(num_to_display <= 0)
-	  	  {
-	  		  num_to_display = 100;
-	  	  }
 	  }
   }
 

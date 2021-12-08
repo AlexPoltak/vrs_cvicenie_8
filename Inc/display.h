@@ -63,5 +63,6 @@ void setSeven(void);
 void setEight(void);
 void setNine(void);
 void setZero(void);
-
+void fillBufferForDisplay(uint8_t *msg, uint8_t len);
+void displayCharacter(uint8_t ch);
 void displayNumber(double num);
