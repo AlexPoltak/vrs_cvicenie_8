@@ -442,7 +442,7 @@ void fillBufferForDisplay(uint8_t *msg, uint8_t len) {
 	static uint8_t index = 0;
 
 	for (uint8_t i = 0; i < 4; i++) {
-			buffer[i] = msg[(i + index) % len];
+			buffer[i] = msg[(i + index)];
 		}
 
   	index++;
@@ -583,8 +583,7 @@ void setDigit(uint8_t pos)
  */
 void updateDisplay(void)
 {
-	resetDigits();
-	resetSegments();
+
 	for(uint8_t i = 0; i < 4; i++)
 	{
 		setDigit(i);
@@ -592,6 +591,8 @@ void updateDisplay(void)
 
 		disp_time_saved = disp_time;
 		while((disp_time_saved + 2) > disp_time){};
+		resetDigits();
+		resetSegments();
 	}
 
 }

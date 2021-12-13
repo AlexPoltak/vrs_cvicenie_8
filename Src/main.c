@@ -25,6 +25,7 @@
 #include "display.h"
 
 void SystemClock_Config(void);
+uint8_t length(uint8_t *);
 
 extern uint64_t disp_time;
 
@@ -54,17 +55,25 @@ int main(void)
   MX_TIM3_Init();
 
   uint8_t message[] = "AabCc";
-  uint8_t length = sizeof(message)/sizeof(uint8_t);
+  uint8_t lengthOfMessage = length(message);
   while (1)
   {
 	  if(disp_time > (saved_time + 500))
 	  {
 	  	  saved_time = disp_time;
-  	  	  fillBufferForDisplay(message, length);
+  	  	  fillBufferForDisplay(message, lengthOfMessage);
 
 	  }
   }
 
+}
+uint8_t length(uint8_t *str) {
+	uint8_t i = 0;
+
+	while (str[i] != '\0') {
+		i++;
+	}
+	return i;
 }
 
 /**
