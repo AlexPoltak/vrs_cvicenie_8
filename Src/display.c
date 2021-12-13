@@ -10,6 +10,7 @@
 display_data_ dDisplayData = {0};
 uint64_t disp_time = 0, disp_time_saved = 0;
 uint8_t buffer[4];
+static uint8_t order = 0;
 
 void updateDisplay(void);
 void setDigit(uint8_t pos);
@@ -447,14 +448,24 @@ void set_(void)
 void fillBufferForDisplay(uint8_t *msg, uint8_t len) {
 	static uint8_t index = 0;
 
+if(index==0){order=0;}
+if(index==len){order=1;}
+
+if(order==0){
 	for (uint8_t i = 0; i < 4; i++) {
 			buffer[i] = msg[(i + index)];
 		}
 
   	index++;
-  	if (index == len) {
-  		index = 0;
-  	}
+}
+if(order==1){
+	for (uint8_t i = 4; i > 4; i--) {
+			buffer[i] = msg[(i + index)];
+		}
+
+  	index--;
+}
+
 }
 void displayCharacter(uint8_t ch)
 {
@@ -588,88 +599,7 @@ void displayCharacter(uint8_t ch)
 
 			}
 	}
-void displayNumber(double num)
-{
-	uint8_t i = 0;
 
-	if(num < 0) return;
-
-	if(num > 9999)
-	{
-		dDisplayData.digit_num = 4;
-		dDisplayData.negative = 0;
-		dDisplayData.resolution = 0;
-	}
-	else if(num >= 1000)
-	{
-		dDisplayData.digit_num = 4;
-		dDisplayData.resolution = 0;
-
-	    while(num > 1)
-	    {
-	    	dDisplayData.digit[i] = (uint32_t)num % 10;
-	        num = num / 10;
-	        i++;
-	    }
-	}
-	else if(num >= 100)
-	{
-		dDisplayData.digit_num = 3;
-		dDisplayData.resolution = 1;
-
-		num = num * 10;
-
-	    while(num > 1)
-	    {
-	    	dDisplayData.digit[i] = (uint32_t)num % 10;
-	        num = num / 10;
-	        i++;
-	    }
-	}
-	else if(num >= 10)
-	{
-		dDisplayData.digit_num = 2;
-		dDisplayData.resolution = 2;
-
-		num = num * 100;
-
-	    while(num > 1)
-	    {
-	    	dDisplayData.digit[i] = (uint32_t)num % 10;
-	        num = num / 10;
-	        i++;
-	    }
-	}
-	else if(num >= 1)
-	{
-		dDisplayData.digit_num = 1;
-		dDisplayData.resolution = 3;
-
-		num = num * 1000;
-
-	    while(num > 1)
-	    {
-	    	dDisplayData.digit[i] = (uint32_t)num % 10;
-	        num = num / 10;
-	        i++;
-	    }
-	}
-	else if(num >= 0)
-	{
-		dDisplayData.digit_num = 1;
-		dDisplayData.resolution = 3;
-
-		num = num * 1000;
-		dDisplayData.digit[3] = 0;
-
-	    while(num > 1)
-	    {
-	    	dDisplayData.digit[i] = (uint32_t)num % 10;
-	        num = num / 10;
-	        i++;
-	    }
-	}
-}
 
 /*
  * Turns required digit ON
@@ -702,7 +632,12 @@ void updateDisplay(void)
 
 	for(uint8_t i = 0; i < 4; i++)
 	{
-		setDigit(i);
+		if(order==0){
+			setDigit(i);
+		}
+		if(order==0){
+			setDigit(3-i);
+		}
 		displayCharacter(buffer[i]);
 
 		disp_time_saved = disp_time;
