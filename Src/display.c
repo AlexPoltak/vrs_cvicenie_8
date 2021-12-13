@@ -596,6 +596,9 @@ void displayCharacter(uint8_t ch)
 				case '9':
 						setNine();
 						break;
+				case '_':
+						set_();
+						break;
 
 			}
 	}
