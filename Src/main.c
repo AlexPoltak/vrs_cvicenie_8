@@ -54,7 +54,7 @@ int main(void)
 
   MX_TIM3_Init();
 
-  uint8_t message[] = "AabCc";
+  uint8_t message[] = "ALEXAndEr_POLtAK_98362_a_bELA_CSErVEnKA_98313";
   uint8_t lengthOfMessage = length(message);
   while (1)
   {

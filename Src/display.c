@@ -435,6 +435,12 @@ void setZ(void)
 	LL_GPIO_ResetOutputPin(SEGMENTE_PORT, SEGMENTE_PIN);
 	LL_GPIO_ResetOutputPin(SEGMENTG_PORT, SEGMENTG_PIN);
 }
+void set_(void)
+{
+	// 	D
+	LL_GPIO_ResetOutputPin(SEGMENTD_PORT, SEGMENTD_PIN);
+
+}
 /**
  * Pre-process number before it is displayed. Extract digits of the number
  */
@@ -455,20 +461,130 @@ void displayCharacter(uint8_t ch)
 	switch(ch)
 	{
 				case 'A':
-				  setA();
-				  break;
+						setA();
+				  	  	break;
 				case 'a':
-				  seta();
-				  break;
+						seta();
+				  	  	break;
 				case 'b':
-				  setb();
-				 break;
+						setb();
+						break;
 				case 'C':
-				setC();
-				 break;
+						setC();
+						break;
 				case 'c':
-				setc();
-				break;
+						setc();
+						break;
+				case 'd':
+						setd();
+						break;
+				case 'E':
+						setE();
+						break;
+				case 'F':
+						setF();
+						break;
+				case 'G':
+						setG();
+						break;
+				case 'H':
+						setH();
+						break;
+				case 'h':
+						seth();
+						break;
+				case 'I':
+						setI();
+						break;
+				case 'J':
+						setJ();
+						break;
+				case 'K':
+						setK();
+						break;
+				case 'L':
+						setL();
+						break;
+				case 'M':
+						setM();
+						break;
+				case 'n':
+						setn();
+						break;
+				case 'O':
+						setO();
+						break;
+				case 'o':
+						seto();
+						break;
+				case 'P':
+						setP();
+						break;
+				case 'q':
+						setq();
+						break;
+				case 'r':
+						setr();
+						break;
+				case 'S':
+						setS();
+						break;
+				case 't':
+						sett();
+						break;
+				case 'U':
+						setU();
+						break;
+				case 'u':
+						setu();
+						break;
+				case 'V':
+						setV();
+						break;
+				case 'W':
+						setW();
+						break;
+				case 'X':
+						setX();
+						break;
+				case 'y':
+						sety();
+						break;
+				case 'Z':
+						setZ();
+						break;
+
+
+				case '0':
+						setZero();
+						break;
+				case '1':
+						setOne();
+						break;
+				case '2':
+						setTwo();
+						break;
+				case '3':
+						setThree();
+						break;
+				case '4':
+						setFour();
+						break;
+				case '5':
+						setFive();
+						break;
+				case '6':
+						setSix();
+						break;
+				case '7':
+						setSeven();
+						break;
+				case '8':
+						setEight();
+						break;
+				case '9':
+						setNine();
+						break;
 
 			}
 	}
@@ -563,16 +679,16 @@ void setDigit(uint8_t pos)
 	switch(pos)
 	{
 		case 0:
-			DIGIT_4_ON;
+			DIGIT_1_ON;
 			break;
 		case 1:
-			DIGIT_3_ON;
-			break;
-		case 2:
 			DIGIT_2_ON;
 			break;
+		case 2:
+			DIGIT_3_ON;
+			break;
 		case 3:
-			DIGIT_1_ON;
+			DIGIT_4_ON;
 			break;
 	}
 }
