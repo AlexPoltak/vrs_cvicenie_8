@@ -455,19 +455,19 @@ void displayCharacter(uint8_t ch)
 	switch(ch)
 	{
 				case 'A':
-				  setZero();
+				  setA();
 				  break;
 				case 'a':
-				  setZero();
+				  seta();
 				  break;
 				case 'b':
-				  setZero();
+				  setb();
 				 break;
 				case 'C':
-				setZero();
+				setC();
 				 break;
 				case 'c':
-				setZero();
+				setc();
 				break;
 
 			}
