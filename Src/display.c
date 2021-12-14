@@ -459,8 +459,8 @@ if(order==0){
   	index++;
 }
 if(order==1){
-	for (uint8_t i = 4; i > 4; i--) {
-			buffer[i] = msg[(i + index)];
+	for (uint8_t i = 0; i< 4; i++) {
+			buffer[3-i] = msg[(index-i)];
 		}
 
   	index--;
@@ -635,12 +635,7 @@ void updateDisplay(void)
 
 	for(uint8_t i = 0; i < 4; i++)
 	{
-		if(order==0){
-			setDigit(i);
-		}
-		if(order==0){
-			setDigit(3-i);
-		}
+		setDigit(i);
 		displayCharacter(buffer[i]);
 
 		disp_time_saved = disp_time;
