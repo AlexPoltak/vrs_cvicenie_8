@@ -449,7 +449,7 @@ void fillBufferForDisplay(uint8_t *msg, uint8_t len) {
 	static uint8_t index = 0;
 
 if(index==0){order=0;}
-if(index==len){order=1;}
+if(index==len-3){order=1;}
 
 if(order==0){
 	for (uint8_t i = 0; i < 4; i++) {
